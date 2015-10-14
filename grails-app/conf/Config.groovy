@@ -1,22 +1,34 @@
-// configuration for plugin testing - will not be included in the plugin zip
-
-log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
-
-    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-           'org.codehaus.groovy.grails.web.pages', //  GSP
-           'org.codehaus.groovy.grails.web.sitemesh', //  layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', // URL mapping
-           'org.codehaus.groovy.grails.commons', // core / classloading
-           'org.codehaus.groovy.grails.plugins', // plugins
-           'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+environments {
+        test {
+                oauth {
+                        providers {
+                                twitter {
+                                        api = org.scribe.builder.api.TwitterApi
+                                        key = 'key'
+                                        secret = 'secret'
+                                        successUri = '/oauth/twitter/success'
+                                        failureUri = '/oauth/twitter/error'
+                                        callback = "${grails.serverURL}/oauth/twitter/callback"
+                                }
+                                facebook {
+                                        api = org.scribe.builder.api.FacebookApi
+                                        key = 'key'
+                                        secret = 'secret'
+                                        successUri = '/oauth/facebook/success'
+                                        failureUri = '/oauth/facebook/error'
+                                        callback = "${grails.serverURL}/oauth/facebook/callback"
+                                        scope = 'email,user_hometown,user_likes,user_location,user_birthday'
+                                }
+                                google {
+                                        api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+                                        key = 'key'
+                                        secret = 'secret'
+                                        successUri = '/oauth/google/success'
+                                        failureUri = '/oauth/google/error'
+                                        callback = "${grails.serverURL}/oauth/google/callback"
+                                        scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+                                }
+                        }
+                }
+        }
 }
