@@ -1,3 +1,5 @@
+[ ![Codeship Status for willcrisis/willcrisis-security](https://codeship.com/projects/0a464f90-54d4-0133-7559-62da5f6452d2/status?branch=master)](https://codeship.com/projects/108815)
+
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
