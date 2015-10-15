@@ -15,14 +15,14 @@ grails.project.dependency.resolution = {
         build(":release:3.1.1", ":rest-client-builder:2.1.1") {
             export = false
         }
-        test(':cache:1.1.8', ":cache-ehcache:1.0.5") {
-            export = false
+        environments {
+            test {
+                test(':cache:1.1.8', ":cache-ehcache:1.0.5") {
+                    export = false
+                }
+            }
         }
         compile ":spring-security-core:2.0-RC4"
-        compile ":spring-security-oauth:2.1.0-RC4"
-        compile ":spring-security-oauth-twitter:0.2"
-        compile ":spring-security-oauth-facebook:0.2"
-        compile ":spring-security-oauth-google:0.3.1"
     }
 }
 
