@@ -12,9 +12,10 @@ class WillcrisisSecurityGrailsPlugin {
     def organization = [ name: "Willcrisis.com", url: "http://www.willcrisis.com/" ]
     def issueManagement = [ system: "JIRA", url: "https://bitbucket.org/willcrisis/willcrisis-security/issues" ]
     def scm = [ url: "https://bitbucket.org/willcrisis/willcrisis-security/src" ]
+    def loadAfter = ['springSecurityCore']
 
     def doWithSpring = {
-        springSecurityCoreUserDetailsService(UsuarioUserDetailsService)
+        userDetailsService(UsuarioUserDetailsService)
         mergeConfig(application)
     }
 

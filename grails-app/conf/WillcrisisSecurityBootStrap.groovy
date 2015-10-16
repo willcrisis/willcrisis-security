@@ -5,11 +5,6 @@ import willcrisis.security.Usuario
 
 class WillcrisisSecurityBootStrap {
     def init = { servletContext ->
-//        def builder = new BeanBuilder()
-//        builder.beans {
-//            userDetailsService(UsuarioUserDetailsService)
-//        }
-//        builder.createApplicationContext()
         environments {
             development {
                 Papel user = new Papel(authority: 'ROLE_USER', nome: 'Usuário').save(flush: true, failOnError: true)
