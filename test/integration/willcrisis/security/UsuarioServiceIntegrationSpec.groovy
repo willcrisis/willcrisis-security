@@ -9,7 +9,7 @@ import grails.test.spock.IntegrationSpec
 class UsuarioServiceIntegrationSpec extends IntegrationSpec {
 
     void createData() {
-        new Papel(authority: 'ROLE_USER', nome: 'Usuario').save(flush: true)
+        mockDomain(Papel, [[authority: 'ROLE_USER', nome: 'Usuario']])
     }
 
     void "test save"() {
@@ -51,7 +51,7 @@ class UsuarioServiceIntegrationSpec extends IntegrationSpec {
             username = 'user'
             nomeCompleto = 'name'
             email = 'anything'
-            permissoes << new Permissao(papel: papel)
+            permissoes << papel
         }
 
         service.save(command)
@@ -66,13 +66,13 @@ class UsuarioServiceIntegrationSpec extends IntegrationSpec {
         then:
         !command.hasErrors()
         def list = Usuario.list()
-        list
+        !list.isEmpty()
         def usuario = list[0]
         usuario.username == 'user'
         usuario.nomeCompleto == 'name'
         usuario.email == 'email@email.com'
         def permissoes = Permissao.list()
-        permissoes
+        !permissoes.isEmpty()
         permissoes.size() == 1
         permissoes[0].usuario == usuario
         permissoes[0].papel == papel

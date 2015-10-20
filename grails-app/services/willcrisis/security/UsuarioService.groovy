@@ -23,12 +23,12 @@ class UsuarioService {
             usuario = new Usuario()
         }
         if (command.alteracao) {
-            DataBindingUtils.bindObjectToInstance(usuario, command.properties, null, ['password', 'alteracao', 'permissoes', 'class'], null)
+            DataBindingUtils.bindObjectToInstance(usuario, command.properties, null, ['password', 'alteracao', 'permissoes', 'constraints', 'class'], null)
             if (command.password) {
                 usuario.password = command.password
             }
         } else {
-            DataBindingUtils.bindObjectToInstance(usuario, command.properties, null, ['alteracao', 'permissoes', 'class'], null)
+            DataBindingUtils.bindObjectToInstance(usuario, command.properties, null, ['alteracao', 'permissoes', 'constraints', 'class'], null)
         }
 
         usuario.save()
@@ -38,10 +38,10 @@ class UsuarioService {
             }
             return
         }
-        salvarPermissoes(command, usuario)
+        savePermissions(command, usuario)
     }
 
-    void salvarPermissoes(UsuarioCommand command, Usuario usuario) {
+    void savePermissions(UsuarioCommand command, Usuario usuario) {
         command.clearErrors()
         if (!validarListaPermissoes(command)) {
             return
