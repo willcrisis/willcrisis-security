@@ -10,8 +10,8 @@ class UsuarioUserDetailsService extends GormUserDetailsService {
 
     @Override
     UserDetails loadUserByUsername(String username, boolean loadRoles) throws UsernameNotFoundException, DataAccessException {
-        Usuario.withTransaction { status ->
-            Usuario usuario = Usuario.findByUsername(username)
+        Person.withTransaction { status ->
+            Person usuario = Person.findByUsername(username)
             if (!usuario) throw new UsernameNotFoundException(
                     'User not found', username)
             Collection<GrantedAuthority> authorities = loadAuthorities(usuario, username, loadRoles)
@@ -24,7 +24,7 @@ class UsuarioUserDetailsService extends GormUserDetailsService {
                     !usuario.accountLocked,
                     authorities,
                     usuario.id,
-                    usuario.nomeCompleto,
+                    usuario.name,
                     usuario.email
             )
         }

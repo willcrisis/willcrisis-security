@@ -1,7 +1,7 @@
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'willcrisis.security.Usuario'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'willcrisis.security.Permissao'
-grails.plugin.springsecurity.authority.className = 'willcrisis.security.Papel'
-grails.plugin.springsecurity.requestMap.className = 'willcrisis.security.Endereco'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'willcrisis.security.Person'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'willcrisis.security.Permission'
+grails.plugin.springsecurity.authority.className = 'willcrisis.security.Role'
+grails.plugin.springsecurity.requestMap.className = 'willcrisis.security.Requestmap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                              ['permitAll'],

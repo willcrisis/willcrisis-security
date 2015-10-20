@@ -1,10 +1,10 @@
 package willcrisis.security
 
-class Usuario {
+class Person {
 
     transient springSecurityService
 
-    String nomeCompleto
+    String name
     String username
     String email
     String password
@@ -18,7 +18,7 @@ class Usuario {
     static constraints = {
         username blank: false, unique: true
         password nullable: false, blank: false
-        nomeCompleto blank: false
+        name blank: false
         email blank: false, email: true
     }
 
@@ -26,8 +26,8 @@ class Usuario {
         password column: '`password`'
     }
 
-    Set<Papel> getAuthorities() {
-        Permissao.findAllByUsuario(this).collect { it.papel }
+    Set<Role> getAuthorities() {
+        Permission.findAllByPerson(this).collect { it.role }
     }
 
     def beforeInsert() {
@@ -41,7 +41,7 @@ class Usuario {
     }
 
     def beforeDelete() {
-        Permissao.removeAll(this)
+        Permission.removeAll(this)
     }
 
     protected void encodePassword() {

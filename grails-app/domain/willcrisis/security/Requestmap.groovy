@@ -2,7 +2,7 @@ package willcrisis.security
 
 import org.springframework.http.HttpMethod
 
-class Endereco {
+class Requestmap {
 
     String url
     String configAttribute

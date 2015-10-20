@@ -2,10 +2,10 @@ package willcrisis.security
 
 import org.springframework.security.core.GrantedAuthority
 
-class Papel implements GrantedAuthority {
+class Role implements GrantedAuthority {
 
     String authority
-    String nome
+    String name
 
     static mapping = {
         cache true
@@ -13,6 +13,6 @@ class Papel implements GrantedAuthority {
 
     static constraints = {
         authority blank: false, unique: true
-        nome blank: false, nullable: false, unique: true
+        name blank: false, nullable: false, unique: true
     }
 }

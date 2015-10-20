@@ -9,15 +9,15 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestMixin(GrailsUnitTestMixin)
-@TestFor(Endereco)
-class EnderecoSpec extends Specification {
+@TestFor(Requestmap)
+class RequestmapSpec extends Specification {
 
     void "test required fields"() {
         given:
-        Endereco endereco
+        Requestmap endereco
 
         when: "no values"
-        endereco = new Endereco()
+        endereco = new Requestmap()
         then:
         !endereco.validate()
         endereco.errors.errorCount == 2
@@ -46,10 +46,10 @@ class EnderecoSpec extends Specification {
 
     void "test unique key"() {
         given:
-        new Endereco(url: '/', configAttribute: 'permitAll', httpMethod: 'GET').save(flush: true)
+        new Requestmap(url: '/', configAttribute: 'permitAll', httpMethod: 'GET').save(flush: true)
 
         when:
-        def endereco = new Endereco(url: '/', configAttribute: 'isAuthenticated()', httpMethod: 'GET')
+        def endereco = new Requestmap(url: '/', configAttribute: 'isAuthenticated()', httpMethod: 'GET')
         then:
         !endereco.save()
         endereco.errors.errorCount == 1

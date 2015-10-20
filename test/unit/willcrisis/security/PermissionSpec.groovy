@@ -10,31 +10,31 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestMixin(GrailsUnitTestMixin)
-@TestFor(Permissao)
-@Mock([Usuario, Permissao])
-class PermissaoSpec extends Specification {
+@TestFor(Permission)
+@Mock([Person, Permission])
+class PermissionSpec extends Specification {
 
     def setup() {
-        mockDomain(Usuario, [[username: 'user', password: 'pass', nomeCompleto: 'User', email: 'user@user.com']])
-        mockDomain(Papel, [[authority: 'ROLE', nome: 'Role']])
+        mockDomain(Person, [[username: 'user', password: 'pass', name: 'User', email: 'user@user.com']])
+        mockDomain(Role, [[authority: 'ROLE', name: 'Role']])
     }
 
     void "test required fields"() {
         given:
-        Permissao permissao
+        Permission permissao
 
         when: "no values are provided"
-        permissao = new Permissao()
+        permissao = new Permission()
         then:
         !permissao.validate()
         permissao.errors.errorCount == 2
-        permissao.errors.getFieldError('usuario').code == 'nullable'
-        permissao.errors.getFieldError('papel').code == 'nullable'
+        permissao.errors.getFieldError('person').code == 'nullable'
+        permissao.errors.getFieldError('role').code == 'nullable'
 
         when:
         permissao.with {
-            usuario = Usuario.list()[0]
-            papel = Papel.list()[0]
+            person = Person.list()[0]
+            role = Role.list()[0]
         }
         then: "must save"
         permissao.validate()
