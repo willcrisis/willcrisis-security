@@ -1,7 +1,6 @@
 package willcrisis.security
 
 import org.codehaus.groovy.grails.web.binding.DataBindingUtils
-import org.springframework.transaction.annotation.Transactional
 
 class PersonService {
     def springSecurityService
@@ -114,7 +113,7 @@ class PersonService {
         return validateEqualsPasswords(command)
     }
 
-    private boolean validateEqualsPasswords(PersonCommand command) {
+    private boolean validateEqualsPasswords(def command) {
         if (command.newPassword != command.confirmPassword) {
             command.errors.reject('user.incorrectConfirmation.message', [messageSource.getMessage('user.newPassword.label', null, 'user.newPassword.label', null), messageSource.getMessage('user.confirmation.label', null, 'user.confirmation.label', null)] as Object[], 'Campos invalidos: {0} e {1}')
         }
@@ -127,7 +126,13 @@ class PersonService {
     }
 
     PersonCommand getCommand(Long id) {
+        if (!id) {
+            return null
+        }
         Person person = Person.findById(id)
+        if (!person) {
+            return null
+        }
         PersonCommand command = new PersonCommand()
         DataBindingUtils.bindObjectToInstance(command, person.properties)
         command.id = person.id
@@ -137,9 +142,14 @@ class PersonService {
         return command
     }
 
-    @Transactional(readOnly = false)
     def delete(Person person) {
-        Permission.removeAll(person)
-        person.delete(flush: true)
+        if (!person) {
+            return messageSource.getMessage('user.invalidUser.message', null, 'user.invalidUser.message', null)
+        }
+        try {
+            person.delete(flush: true)
+        } catch (Exception e) {
+            return 'default.not.deleted.message'
+        }
     }
 }

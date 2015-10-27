@@ -15,10 +15,10 @@ class PersonServiceIntegrationSpec extends IntegrationSpec {
     private void createUser() {
         createRole()
         mockDomain(Person, [[username: 'user', password: 'pass', email: 'email@email.com', name: 'name']])
-        def usuario = Person.list()[0]
-        def papel = Role.list()[0]
-        mockDomain(Permission, [[usuario: usuario, papel: papel]])
-        service.springSecurityService =  usuario.springSecurityService
+        def person = Person.list()[0]
+        def role = Role.list()[0]
+        mockDomain(Permission, [[person: person, role: role]])
+        service.springSecurityService =  person.springSecurityService
     }
 
     void "test save"() {
@@ -212,5 +212,48 @@ class PersonServiceIntegrationSpec extends IntegrationSpec {
         command.errors.getFieldError('name').code == 'nullable'
         command.errors.getFieldError('email').code == 'nullable'
 
+    }
+
+    void "test get command"() {
+        given:
+        createUser()
+
+        when: 'no id is provided'
+        def command = service.getCommand(null)
+        then:
+        command == null
+
+        when: 'the person does not exists in database'
+        command = service.getCommand(111)
+        then:
+        command == null
+
+        when: 'valid id is provided'
+        def person = Person.list()[0]
+        command = service.getCommand(person.id)
+        then:
+        command
+        command.name == person.name
+        command.versionField == person.version
+        command.email == person.email
+        command.username == person.username
+        command.permissions
+        command.permissions.size() == 1
+        command.permissions[0] == Permission.list()[0].role
+    }
+
+    void "test delete"() {
+        given:
+        createUser()
+
+        when: 'no person is provided'
+        def result = service.delete(null)
+        then:
+        result == 'user.invalidUser.message'
+
+        when: 'person is deleted'
+        result = service.delete(Person.list()[0])
+        then:
+        result == null
     }
 }

@@ -41,7 +41,7 @@ class Person {
     }
 
     def beforeDelete() {
-        Permission.removeAll(this)
+//        Permission.removeAll(this)
     }
 
     protected void encodePassword() {
