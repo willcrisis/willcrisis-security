@@ -1,5 +1,3 @@
 language: groovy
-before_script:
-	- ./grailsw clean
-	- ./grailsw refresh-dependencies --non-interactive
+before_script: ./grailsw clean && ./grailsw refresh-dependencies --non-interactive
 script: ./grailsw test-app
