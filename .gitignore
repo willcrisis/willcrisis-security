@@ -4,6 +4,8 @@
 *.log
 .idea
 .settings
+.classpath
+cobertura.ser
 grails-willcrisis-*.zip
 grails-willcrisis-*.zip.sha1
 plugin.xml

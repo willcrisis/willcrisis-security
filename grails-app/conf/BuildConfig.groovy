@@ -18,7 +18,7 @@ grails.project.dependency.resolution = {
             export = false
         }
         if (Environment.current == Environment.TEST) {
-            test(':cache:1.1.8', ":cache-ehcache:1.0.5") {
+            test(':cache:1.1.8', ":cache-ehcache:1.0.5", ":code-coverage:1.2.7") {
                 export = false
             }
         }
@@ -28,3 +28,8 @@ grails.project.dependency.resolution = {
 
 grails.project.repos.default = "willcrisis"
 grails.project.groupId = "com.willcrisis.plugins"
+
+coverage {
+	enabledByDefault = true
+	xml = true
+}
