@@ -7,7 +7,8 @@ import grails.test.spock.IntegrationSpec
 @Mock([Role, Person, Permission])
 @TestFor(PersonService)
 class PersonServiceIntegrationSpec extends IntegrationSpec {
-
+	def mailService
+			
     private void createRole() {
         mockDomain(Role, [[authority: 'ROLE_USER', name: 'Usuario']])
     }
@@ -211,7 +212,27 @@ class PersonServiceIntegrationSpec extends IntegrationSpec {
         command.errors.getFieldError('newPassword').code == 'nullable'
         command.errors.getFieldError('name').code == 'nullable'
         command.errors.getFieldError('email').code == 'nullable'
-
+						
+		when: 'fields are fully provided'				
+		command = new RegisterPersonCommand(name:"User Test", email:"user@test.com", newPassword:"123test", confirmPassword:"123test")
+		service.register(command)
+		then:
+		!command.hasErrors()
+		
+		def person = Person.findByEmail(command.email)
+		person != null
+		
+		def permission = Permission.findByPerson(person)
+		permission != null
+		
+		when: 'fields are fully provided, but password and confirmation dont match'
+		command = new RegisterPersonCommand(name:"User Test", email:"user@test.com", newPassword:"123test", confirmPassword:"123nottest")
+		service.register(command)
+		
+		then:
+		command.hasErrors()
+		command.errors.errorCount == 1
+		command.errors.globalError.code == 'user.incorrectConfirmation.message'
     }
 
     void "test get command"() {
