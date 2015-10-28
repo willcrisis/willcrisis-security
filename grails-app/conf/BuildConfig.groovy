@@ -10,8 +10,6 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenLocal()
         mavenCentral()
-
-        mavenRepo id:"Artifactory" , url:"http://artifactory.willcrisis.com/artifactory/repo"
     }
     plugins {
         build(":release:3.1.1", ":rest-client-builder:2.1.1") {
@@ -25,9 +23,6 @@ grails.project.dependency.resolution = {
         compile ":spring-security-core:2.0-RC4"
     }
 }
-
-grails.project.repos.default = "willcrisis"
-grails.project.groupId = "com.willcrisis.plugins"
 
 coverage {
 	enabledByDefault = true

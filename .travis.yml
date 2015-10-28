@@ -1,3 +1,13 @@
 language: groovy
-before_script: ./grailsw clean && ./grailsw refresh-dependencies --non-interactive
-script: ./grailsw test-app
+before_script: "./grailsw clean && ./grailsw refresh-dependencies --non-interactive"
+script: "./grailsw test-app && ./grailsw test package-plugin"
+before_deploy:
+  - export RELEASE_PKG_FILE=$(ls *.zip)
+  - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
+deploy:
+  provider: releases
+  api_key:
+    secure: k7QPdmW8aulIIAAo7cc1jC62xtrOuWKWYJgshIc8Jpyg3CNDVzdRP5DjPNQ57CEb5f73GnnQzttKTy0L6TaAFT4KkLw3snLDwigKI7FxAsxBxgK/DrBNd+8ogoUMUklL9iLs1UG7qJIb3PU7BRF7vv/n633PQTgWoN/I/e4rbY6x96TyLm2oMg7oxghnNQxFLyxFjfX7Gvx73hhCMuOmR/8VEdMziJm2u0oAOqgHuY6lvnOozKRcBMKwy8wS1klkjM/Kvs9hhG395PQg+mN3lwcxNv6jWb84OuJg/DABfFj9V2hI13etMaPhLvR9m+XSEsSWfxeBrKSFW78hjh5mhj5yolUGXFGUv6bRMmg3a4As/OXB4EyQLAxtNXkNl0iaV/xDDqrDQERsJDtRJOTkiHGfA3YXKnIyX790VgeGL9/0RFlfm7pjxaKNBOaQJEBgD7lJHdStKvlOlLJACcwa5o4n7aO09u/fz66E97p7pwgsrWeuMUtciSMYZlP/C/yoWWYGarZIdIIgzaYVB+VTxBM2zdw3la/WemaQYFemlZgrlpG004LN7Ab+SLedJG5IuBrEPo6TRVSED1ses6RXFEcEZ3siX7j5osNF45rrnPZUUJVD0YTp/ktmpQbNstwtF/BMSdbLLyrLkJaQhHleDIgweZ03FZMeKC4g9UuEA7E=
+  file: "${RELEASE_PKG_FILE}"
+  on:
+    repo: willcrisis/willcrisis-security
