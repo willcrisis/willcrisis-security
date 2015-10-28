@@ -11,3 +11,4 @@ deploy:
   file: "${RELEASE_PKG_FILE}"
   on:
     repo: willcrisis/willcrisis-security
+    tags: true
