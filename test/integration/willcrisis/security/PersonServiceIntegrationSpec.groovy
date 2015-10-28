@@ -7,8 +7,6 @@ import grails.test.spock.IntegrationSpec
 @Mock([Role, Person, Permission])
 @TestFor(PersonService)
 class PersonServiceIntegrationSpec extends IntegrationSpec {
-	def mailService
-			
     private void createRole() {
         mockDomain(Role, [[authority: 'ROLE_USER', name: 'Usuario']])
     }

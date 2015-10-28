@@ -2,7 +2,7 @@ import grails.util.Environment
 import willcrisis.security.UsuarioUserDetailsService
 
 class WillcrisisSecurityGrailsPlugin {
-    def version = "0.1"
+    def version = "1.0.0"
     def grailsVersion = "2.4.4 > *"
     def title = "Willcrisis Security"
     def author = "Willian Krause"
