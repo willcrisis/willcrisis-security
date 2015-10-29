@@ -15,7 +15,7 @@
 
     "files":
         [
-        {"includePattern": "${RELEASE_PKG_FILE}", "uploadPattern": "$1"}
+        {"includePattern": "grails-willcrisis-security-*.zip", "uploadPattern": "$1"}
         ],
     "publish": true
 }
