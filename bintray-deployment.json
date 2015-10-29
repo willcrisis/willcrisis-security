@@ -1,0 +1,17 @@
+{
+    "package": {
+        "name": "willcrisis-security",
+        "repo": "plugins",
+        "subject": "willcrisis",
+    },
+
+    "version": {
+        "name": "1.0.0",
+    },
+
+    "files":
+        [
+        {"includePattern": "(*.zip)"},
+        ],
+    "publish": true
+}
