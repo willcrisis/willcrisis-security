@@ -15,7 +15,7 @@
 
     "files":
         [
-        {"includePattern": "(.*\.zip)", "uploadPattern": "$1"}
+        {"includePattern": "grails-willcrisis-security-1.0.0.zip", "uploadPattern": "$1"}
         ],
     "publish": true
 }

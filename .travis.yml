@@ -19,4 +19,5 @@ deploy:
     user: willcrisis
     key:
       secure: MnhPPtuSVsJDYLRNqOfxCQ4gfaBSUScmMYr3aFYcFFSa/xzU9rM9D3FWJRZwJKta7YBhv1bc8IjIXtwF27b4vuelqbKUQ7VT4LS4dHdVv91sPyHeCcBMyv29tQIK2zSKT9tBF0Ts2PBhE93bDChdvnJ0j9oh8QN4s2X2EZtipPW7fk76WFNtlI50neBhLp2yVnZ0beFxhm4mcrNZEPTS+VdjtsT5h+CtH3bOYdRHjw7YmExDRVVWfmzjspXXdqMZ8uD/HNMnX3GLUwkN3rVe+zCb02wZza1JvLTw/xK2+7yjVg30+N8gy6BJqxLg41zlrKaiuX70fbhOY+kEUa6ph+Z0lJixcJ0slt8hyijRoMLrfUsODiY5Ztgp3+z4VZ3wJmDHJnKirsqe9kQFadqWGmkxK0bbE/ZO3mPd6gABSX/MZUxrcl2OAV2s7rKwX4xaXrjZ8nzN6NSglUHHdNBHDA4KV0skoM13nFurx0gkhSjrNPSY6VOIy4BI5mO/fUFleeESfTUaBqHrHmj+JF1ShgSS2RHbM6ADYoUWkYcwCiEui4Fy96AFykl1WBAKdcsAfdiP9zUg57zNm+sAvpVwBfopVrtLZX0HA088W/yFpU8FbBku0ggfMs9pRp35BTM3Vp5nxkb6n9nbF6tmRJp3GRRnancWeJQo6wG9L1YD5EI=
-    dry-run: true
+    on:
+      tags: true
