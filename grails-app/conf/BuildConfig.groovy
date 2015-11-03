@@ -28,3 +28,19 @@ coverage {
 	enabledByDefault = true
 	xml = true
 }
+
+grails.project.repos.default = "willcrisis"
+
+grails {
+    project {
+        repos {
+            willcrisis {
+                url = System.getenv("REPOSITORY_URL")
+                username = System.getenv("REPOSITORY_USER")
+                password = System.getenv("REPOSITORY_PASSWD")
+            }
+        }
+    }
+}
+
+grails.project.groupId = "com.willcrisis"
