@@ -31,4 +31,4 @@ the app
 
 ### Thanks to ###
 
-* [Em�lio S. do Carmo](https://github.com/emilio2hd) for writing some tests and configuring Coverage plugin
+* [Emílio S. do Carmo](https://github.com/emilio2hd) for writing some tests and configuring Coverage plugin
