@@ -9,7 +9,7 @@ This plugin adds some features to the default implementation of [Spring Security
 Add the following to your configuration:
 
 ```Groovy
-//BuildCOnfig.groovy
+//BuildConfig.groovy
 
 repositories {
     ...
@@ -17,7 +17,7 @@ repositories {
 }
 
 plugins {
-    compile ":willcrisis-security:1.0.0"
+    compile ":willcrisis-security:1.0.1"
 }
 ```
 
@@ -31,4 +31,4 @@ the app
 
 ### Thanks to ###
 
-* [Emílio S. do Carmo](https://github.com/emilio2hd) for writing some tests and configuring Coverage plugin
+* [Emï¿½lio S. do Carmo](https://github.com/emilio2hd) for writing some tests and configuring Coverage plugin
