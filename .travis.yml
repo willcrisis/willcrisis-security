@@ -13,6 +13,6 @@ deploy:
       repo: willcrisis/willcrisis-security
       tags: true
   - provider: script
-    script: ./grailsw test maven-deploy
+    script: ./grailsw test upload-to-bintray
     on:
       tags: true

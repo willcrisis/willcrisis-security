@@ -1,31 +1,34 @@
 [![Build Status](https://travis-ci.org/willcrisis/willcrisis-security.svg)](https://travis-ci.org/willcrisis/willcrisis-security)
 
-# README #
+# Willcrisis Security Plugin #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This plugin adds some features to the default implementation of [Spring Security Plugin](https://github.com/grails/spring-security-plugin)
 
-### What is this repository for? ###
+### Installing ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Add the following to your configuration:
 
-### How do I get set up? ###
+```Groovy
+//BuildCOnfig.groovy
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+repositories {
+    ...
+    mavenRepo "https://dl.bintray.com/willcrisis/plugins/"
+}
 
-### Contribution guidelines ###
+plugins {
+    compile ":willcrisis-security:1.0.0"
+}
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+### What this plugin do ###
 
-### Who do I talk to? ###
+* Adds a `personService` to encapsulate logic for including, updating, deleting and self-registering users
+* Adds a custom `UserDetailsService` to make the new fields of the `Person` domain available
+* If combined with [Willcrisis Mail Plugin](https://github.com/willcrisis/willcrisis-mail), sends e-mails to new users
+* If combined with [Willcrisis Share Plugin](https://github.com/willcrisis/willcrisis-share), allows data sharing across
+the app
 
-* Repo owner or admin
-* Other community or team contact
+### Thanks to ###
+
+* [Emílio S. do Carmo](https://github.com/emilio2hd) for writing some tests and configuring Coverage plugin
