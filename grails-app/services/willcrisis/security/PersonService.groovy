@@ -88,10 +88,10 @@ class PersonService {
             mailService.sendMail {
                 async true
                 multipart true
-                from grailsApplication.config.grails.remetente.cadastro
+                from grailsApplication.config.grails.from.register
                 to person.email
                 subject messageSource.getMessage('user.newUser.email.subject', null, null)
-                html(view: '/person/mail/register', model: [nome: person.name, urlServidor: grailsApplication.config.grails.serverURL])
+                html(view: '/person/mail/register', model: [name: person.name, serverUrl: grailsApplication.config.grails.serverURL])
                 inline 'logo', 'image/jpg', new File('./grails-app/assets/images/logo/logo-64.png')
             }
         }

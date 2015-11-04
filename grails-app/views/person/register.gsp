@@ -40,11 +40,11 @@
 <div style="text-align: center;">
     <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;min-width: 500px;max-width: 750px;">
         <div style="position: relative;min-height: 50px;margin-bottom: 20px;border: 1px solid transparent;padding-right: 15px;padding-left: 15px;background-color: #009688;color: rgba(255, 255, 255, .84);text-align: left;">
-            <a href="${urlServidor}"><img src="cid:logo" /></a>
+            <a href="${serverUrl}"><img src="cid:logo" /></a>
         </div>
         <div style="padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;min-width: 500px;max-width: 750px;">
             <div style="text-align: justify;">
-                <p style="margin: 0 0 10px;"><g:message code="user.newUser.email.text" args="[nome]" /> </p>
+                <p style="margin: 0 0 10px;"><g:message code="user.newUser.email.text" args="[name]" /> </p>
             </div>
         </div>
     </div>
